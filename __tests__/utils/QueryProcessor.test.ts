@@ -40,6 +40,12 @@ describe("QueryProcessor", () => {
         expect(response).toBe("123");
     });
 
+    test('should return sum of three numbers', () => {
+        const query = "27 plus 96 plus 100";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("223");
+    });
+
     test('should return difference of two numbers', () => {
         const query = "27 minus 96";
         const response: string = QueryProcessor(query);
