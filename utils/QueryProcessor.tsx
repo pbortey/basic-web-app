@@ -44,5 +44,21 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("square") && query.toLowerCase().includes("cube")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const isSquareAndCube = (num: number) => {
+        const sqrt = Math.sqrt(num);
+        const cbrt = Math.cbrt(num);
+        return Number.isInteger(sqrt) && Number.isInteger(cbrt);
+      };
+
+      const result = numbers.find((num) => isSquareAndCube(Number(num)));
+      if (result) {
+        return result;
+      }
+    }
+  }
+
   return "";
 }
