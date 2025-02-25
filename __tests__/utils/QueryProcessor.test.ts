@@ -40,6 +40,12 @@ describe("QueryProcessor", () => {
         expect(response).toBe("123");
     });
 
+    test('should return difference of two numbers', () => {
+        const query = "27 minus 96";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("-69");
+    });
+
     test('should return largest number', () => {
         const query = "What is the largest number in 40, 69, 83?";
         const response: string = QueryProcessor(query);
