@@ -14,10 +14,6 @@ export default function QueryProcessor(query: string): string {
     return "pbortey";
   }
 
-  // if (query.toLowerCase().includes("27 plus 96")) {
-  //   return (27 + 96).toString();
-  // }
-
   if (query.toLowerCase().includes("plus")) {
     const numbers = query.match(/\d+/g);
     if (numbers && numbers.length >= 2) {
@@ -57,6 +53,22 @@ export default function QueryProcessor(query: string): string {
       if (result) {
         return result;
       }
+    }
+  }
+
+  if (query.toLowerCase().includes("prime")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const isPrime = (num: number) => {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      };
+
+      const primes = numbers.filter((num) => isPrime(Number(num)));
+      return primes.join(", ");
     }
   }
 
